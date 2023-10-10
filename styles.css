@@ -1,0 +1,428 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 15px;
+}
+
+body {
+  font-family: "League Spartan", sans-serif;
+  color: hsl(180, 29%, 50%);
+  background-color: hsl(180, 52%, 96%);
+}
+
+.header {
+  background-color: hsl(180, 29%, 50%);
+}
+
+.header img {
+  width: 100%;
+  height: 100%;
+}
+
+.filterSpace {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  .filterTab {
+    border-radius: 40px;
+    background-color: #fff;
+    width: 70%;
+    height: 80%;
+
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    align-items: center;
+    padding-left: 30px;
+
+    .taggg {
+      background-color: hsl(180, 52%, 96%);
+      padding: 5px;
+      border-radius: 5px;
+      height: 15px;
+      text-align: center;
+    }
+
+    .taggg:hover {
+      background-color: hsl(180, 29%, 50%);
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+
+  .clear {
+    background-color: #fff;
+    border: 1px solid #b9bdcf;
+    border-radius: 20px;
+    color: #b9bdcf;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 8px 16px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .clear:hover {
+    background-color: #b9bdcf;
+    color: #fff;
+  }
+}
+
+.jobListings {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 10%;
+  padding: 20px;
+  gap: 20px;
+
+  .job {
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 4fr 3fr 1fr;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25); /* New property */
+
+    .logo {
+    }
+
+    .bin {
+      width: 34%;
+      height: 50%;
+      margin: auto;
+      cursor: pointer;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      .topps {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .company {
+          font-size: 1.2rem;
+        }
+
+        .alerts {
+          display: flex;
+          gap: 5px;
+
+          .tag {
+            padding: 3px 6px;
+            border-radius: 25px;
+            font-size: 0.8rem;
+          }
+
+          .new {
+            color: #fff;
+            background-color: hsl(180, 29%, 50%);
+          }
+
+          .featured {
+            color: #fff;
+            background-color: hsl(180, 14%, 20%);
+          }
+        }
+      }
+
+      .position {
+        color: hsl(180, 14%, 20%);
+        font-size: 1.4rem;
+      }
+
+      .position:hover {
+        color: hsl(180, 29%, 50%);
+        cursor: pointer;
+      }
+
+      .subbs {
+        display: flex;
+        gap: 10px;
+
+        .subb {
+          color: hsl(180, 8%, 52%);
+        }
+      }
+    }
+
+    .taggs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+
+      .tagg {
+        background-color: hsl(180, 52%, 96%);
+        padding: 5px;
+        border-radius: 5px;
+        height: 15px;
+        text-align: center;
+      }
+
+      .tagg:hover {
+        background-color: hsl(180, 29%, 50%);
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .job:hover {
+    position: relative;
+  }
+
+  .job:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: hsl(180, 29%, 50%);
+  }
+}
+
+.addJobButton {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  background-color: hsl(180, 29%, 50%);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1 rem;
+  cursor: pointer;
+}
+
+.modalContainer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.jobModal {
+  background-color: hsl(180, 29%, 50%);
+  padding: 10px 0 20px 0;
+  border-radius: 10px;
+  width: 450px;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 auto;
+  color: #fff;
+}
+
+.jobModal form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  padding: 10px;
+}
+
+.jobModal select,
+.jobModal input[type="text"],
+.jobModal input[type="email"],
+.jobModal textarea {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.jobModal label {
+  font-weight: bold;
+  margin-bottom: 10px;
+  width: 80%;
+  text-align: left;
+}
+
+.jobModal input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.jobModal button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.jobModal button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.close:hover {
+  color: hsl(180, 14%, 20%);
+}
+
+.attribution {
+  background-color: hsl(180, 29%, 50%);
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.attribution a {
+  text-decoration: none;
+  color: hsl(180, 14%, 20%);
+}
+
+.attribution a:hover {
+  text-decoration: underline;
+}
+
+/* Media query for tablet size */
+@media only screen and (max-width: 950px) {
+  html {
+    font-size: 13px;
+  }
+
+  .jobListings {
+    .job {
+      grid-template-columns: 1fr 2fr 2fr 1fr;
+
+      .logo {
+        width: 60px;
+        height: 60px;
+      }
+
+      .bin {
+        width: 25px;
+        height: 40px;
+      }
+
+      .taggs {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+  }
+}
+
+/* Media query for mobile size */
+@media only screen and (max-width: 650px) {
+  html {
+    font-size: 11px;
+  }
+
+  .jobListings {
+    .job {
+      grid-template-columns: 1fr 2fr 2fr 1fr;
+
+      .logo {
+        width: 40px;
+        height: 40px;
+      }
+
+      .bin {
+        width: 15px;
+        height: 25px;
+      }
+
+      .taggs {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 535px) {
+  html {
+    font-size: 10px;
+  }
+
+  .filterSpace {
+    height: 80px;
+
+    .filterTab {
+      grid-template-columns: 1fr 1fr 1fr;
+      padding-left: 0px;
+      padding: 0px 10px;
+      border-radius: 5px;
+    }
+  }
+
+  .jobListings {
+    .job {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .logo {
+        width: 50px;
+        height: 50px;
+      }
+
+      .bin {
+        width: 25px;
+        height: 25px;
+      }
+
+      .taggs {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      .info::after {
+        margin-top: 5px;
+        content: "";
+        display: block;
+        margin-bottom: 8px;
+        border-bottom: 1px solid #b9bdcf;
+      }
+    }
+  }
+
+  .jobModal {
+    width: 100%;
+    /* height: 100%; */
+  }
+
+  .jobModal select,
+  .jobModal input[type="text"],
+  .jobModal input[type="email"],
+  .jobModal textarea {
+    height: 7px;
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+}
